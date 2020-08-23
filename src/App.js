@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import Players from "./components/Players";
 
 const Squad = [
-  "https://images.daznservices.com/di/library/GOAL/e2/82/axel-tuanzebe-man-utd-2019-20_15l7nsm715acy14rlprwldrh2v.jpg",
-  "https://d3nfwcxd527z59.cloudfront.net/content/uploads/2020/03/06081624/Odion-Ighalo-celebrates-goal-Manchester-United-Derby",
   "https://i2-prod.manchestereveningnews.co.uk/incoming/article17602478.ece/ALTERNATES/s615/0_GettyImages-1198855234.jpg",
   "https://cdn.vox-cdn.com/thumbor/aL5AhhT_j-z35NgvXdcMvC_QUGw=/0x0:2400x3000/1200x800/filters:focal(1438x317:1822x701)/cdn.vox-cdn.com/uploads/chorus_image/image/67024646/1254242454.jpg.0.jpg",
   "https://i0.wp.com/metro.co.uk/wp-content/uploads/2020/03/GettyImages-1211338990.jpg",
@@ -16,24 +13,30 @@ export class App extends Component {
     super(props);
 
     this.state = { currentImg: 0 };
+    this.nextGP = this.nextGP.bind(this);
   }
 
   nextGP() {
-    let current = this.state.currentImg;
-    let next = ++current % Squad.length;
-    this.setState({ currentImg: next });
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(this.nextImg, 5000);
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
+    if (this.state.currentImg + 1 === Squad.length) {
+      this.setState({
+        currentImg: 0,
+      });
+      console.log(this.state.currentImg);
+    } else {
+      this.setState({
+        currentImg: this.state.currentImg + 1,
+      });
+    }
   }
 
   render() {
     let img = Squad[this.state.currentImg];
-    return <Players img={img} />;
+    return (
+      <div>
+        <img src={img} alt=" " />
+        <button onClick={this.nextGP}>Next</button>
+      </div>
+    );
   }
 }
 
