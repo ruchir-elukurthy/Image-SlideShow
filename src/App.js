@@ -32,9 +32,19 @@ export class App extends Component {
   render() {
     let img = Squad[this.state.currentImg];
     return (
-      <div>
-        <img src={img} alt=" " />
-        <button onClick={this.nextGP}>Next</button>
+      <div className="manutd">
+        <h3>Hit next to see man utd players</h3>
+        <div>
+          <img
+            style={{
+              height: 250,
+              width: 350,
+            }}
+            src={img}
+            alt=" "
+          />
+          <button onClick={this.nextGP}>Next</button>
+        </div>
       </div>
     );
   }
