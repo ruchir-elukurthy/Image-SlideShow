@@ -37,13 +37,27 @@ export class App extends Component {
         <div>
           <img
             style={{
-              height: 250,
-              width: 350,
+              height: 200,
+              width: 300,
             }}
             src={img}
             alt=" "
           />
-          <button onClick={this.nextGP}>Next</button>
+          <br />
+          <button
+            style={{
+              font: "inherit",
+              cursor: "pointer",
+              border: "1px solid blue",
+              borderRadius: "10px",
+              background: "blue",
+              color: "white",
+              padding: "0.5rem 2rem",
+            }}
+            onClick={this.nextGP}
+          >
+            Next
+          </button>
         </div>
       </div>
     );
